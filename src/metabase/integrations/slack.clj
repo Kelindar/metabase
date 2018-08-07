@@ -32,7 +32,7 @@
   (when token
     (handle-response (request-fn (str slack-api-base-url "/" (name endpoint)) {params-key      (assoc params :token token)
                                                                               :conn-timeout   1000
-                                                                              :socket-timeout 1000}))))
+                                                                              :socket-timeout 300000}))))
 
 (def ^{:arglists '([endpoint & {:as params}]), :style/indent 1} GET  "Make a GET request to the Slack API."  (partial do-slack-request http/get  :query-params))
 (def ^{:arglists '([endpoint & {:as params}]), :style/indent 1} POST "Make a POST request to the Slack API." (partial do-slack-request http/post :form-params))
